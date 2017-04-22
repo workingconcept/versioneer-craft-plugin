@@ -1,0 +1,23 @@
+{% set baseUrl = 'entries/'~entry.getSection().handle~'/'~entry.id~(entry.slug ? '-'~entry.slug)~'/' %}
+
+<table class="data" cellpadding="0" cellpadding="0" border="0" width="100%">
+	<thead>
+		<th></th>
+		<th>Creator</th>
+		<th>Created</th>
+		<th>Notes</th>
+	</thead>
+	<tbody>
+		{% for version in versions %}
+		<tr>
+			<td>
+				<a href="{{ url(baseUrl~'versions/'~version.versionId) }}">{{ "Version {num}"|t({ num: version.num }) }}</a>
+				{% if loop.first %} <span style="color: #999;">current</span>{% endif %}
+			</td>
+			<td>{{ version.creator.name }}</td>
+			<td>{{ version.dateCreated.uiTimestamp() }}</td>
+			<td>{{ version.revisionNotes }}</td>
+		</tr>
+		{% endfor %}
+	</tbody>
+</table>
