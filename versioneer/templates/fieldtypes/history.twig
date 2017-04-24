@@ -1,18 +1,21 @@
 {% set baseUrl = 'entries/'~entry.getSection().handle~'/'~entry.id~(entry.slug ? '-'~entry.slug)~'/' %}
 
+{% if entry.section.enableVersioning != true %}
+	<p class="light">{{ "Please enable entry versioning for this section."|t }}</p>
+{% elseif versions | length %}
 <table class="data" cellpadding="0" cellpadding="0" border="0" width="100%">
 	<thead>
 		<th></th>
-		<th>Creator</th>
-		<th>Created</th>
-		<th>Notes</th>
+		<th>{{ "Creator"|t }}</th>
+		<th>{{ "Created"|t }}</th>
+		<th>{{ "Notes"|t }}</th>
 	</thead>
 	<tbody>
 		{% for version in versions %}
 		<tr>
 			<td>
 				<a href="{{ url(baseUrl~'versions/'~version.versionId) }}">{{ "Version {num}"|t({ num: version.num }) }}</a>
-				{% if loop.first %} <span style="color: #999;">current</span>{% endif %}
+				{% if loop.first %} <span class="light">current</span>{% endif %}
 			</td>
 			<td>{{ version.creator.name }}</td>
 			<td>{{ version.dateCreated.uiTimestamp() }}</td>
@@ -21,3 +24,6 @@
 		{% endfor %}
 	</tbody>
 </table>
+{% else %}
+	<p class="light">{{ "This entry doesn't have a version history yet."|t }}</p>
+{% endif %}
