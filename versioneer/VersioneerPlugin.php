@@ -7,7 +7,7 @@
  * @author    Working Concept
  * @copyright Copyright (c) 2017 Working Concept
  * @link      https://workingconcept.com
- * @package   DprTools
+ * @package   Versioneer
  * @since     0.0.1
  */
 
@@ -38,7 +38,7 @@ class VersioneerPlugin extends BasePlugin
 
     public function getVersion()
     {
-        return '0.0.1';
+        return '0.0.2';
     }
 
     public function getSchemaVersion()
