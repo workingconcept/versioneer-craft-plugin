@@ -2,7 +2,7 @@
 
 This plugin adds a really simple _Version History_ field type that you can add to an entry to display its version history—or at least the most recent 500 versions compared to the 10 that Craft displays.
 
-![](/workingconcept/versioneer-craft-plugin/raw/master/screenshots/img/field-type-example.png)
+![](https://raw.githubusercontent.com/workingconcept/versioneer-craft-plugin/master/screenshots/field-type-example.png)
 
 ## Setup
 
